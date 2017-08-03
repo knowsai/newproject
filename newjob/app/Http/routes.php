@@ -14,8 +14,15 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function () {
-        return view('welcome');
+        return view('/template/index');
     });
+    Route::get('/about', function () {
+        return view('/template/about');
+    });
+    Route::get('/gallery', function () {
+        return view('/template/gallery');
+    });
+    
 
     Route::any('admin/login', 'Admin\LoginController@login');
     Route::get('admin/code', 'Admin\LoginController@code');
@@ -37,5 +44,5 @@ Route::group(['middleware' => ['web','admin.login'],'prefix' => 'admin','namespa
     Route::resource('navs','NavsController');
 
 
-    Route::any('99', 'CategoryController@ad99');
+    Route::any('ad99', 'CategoryController@ad99');
 });
